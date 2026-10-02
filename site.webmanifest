@@ -1,0 +1,17 @@
+{
+  "name": "YOUR NAME — Creative Designer Portfolio",
+  "short_name": "YOUR NAME",
+  "description": "Graphic design, brand identity, UI/UX and web design portfolio.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
