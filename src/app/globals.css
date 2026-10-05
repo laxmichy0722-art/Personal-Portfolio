@@ -1,0 +1,430 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Dark mode is class-driven, not system-driven.
+   Tailwind v4 defaults `dark:` to `@media (prefers-color-scheme: dark)`. This
+   site is dark-only by design (see the palette below), so system preference is
+   irrelevant — but the upstream shadcn/ui primitives still ship meaningful
+   `dark:` refinements (subtle input fills, stronger borders, softened
+   destructive states). Rebinding the variant to a `.dark` class and setting
+   that class once on <html> activates those refinements regardless of the
+   visitor's OS, which is exactly the behaviour this design wants.
+   ========================================================================== */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   Design tokens
+   Dark-first editorial system. Near-black grounds the page and carries
+   structure; a single orange accent is rationed out for primary actions,
+   eyebrows, links, focus rings and hover states so the page never reads as
+   "colourful". These values are the brand palette and match the generated
+   project/gallery artwork, so screenshots sit on the page without a visible
+   seam.
+
+   Contrast (measured against --color-bg #0D0D0D, the darkest surface):
+     --color-fg          #FFFFFF  18.6:1  AAA
+     --color-fg-muted    #A1A1AA   7.6:1  AAA  (body/secondary text)
+     --color-fg-subtle   #888888   5.5:1  AA   (mono labels, meta)
+     --color-ink         #D4D4D8  12.9:1  AAA  (large display type)
+     --color-accent      #FF6A00   6.8:1  AA   (and 6.8:1 for the near-black
+                                                    text placed on top of it)
+
+   NOTE: white text must never sit on the accent — white-on-#FF6A00 is only
+   2.9:1. Every accent fill uses --color-accent-foreground (#0D0D0D) instead.
+   ========================================================================== */
+
+@theme {
+  /* --- Surfaces ------------------------------------------------------- */
+  --color-bg: #0d0d0d;
+  --color-bg-elevated: #111111;
+  --color-surface: #111111;
+  --color-surface-hover: #1a1a1a;
+
+  /* --- Text ----------------------------------------------------------- */
+  --color-fg: #ffffff;
+  --color-fg-muted: #a1a1aa;
+  /* The brief's specified secondary text. Darker than --color-fg-muted on
+     purpose: this token is only ever used for 11px mono metadata, and #888888
+     clears AA at that size with room to spare. */
+  --color-fg-subtle: #888888;
+
+  /* --- Ink (a dimmer white, for large type only) ----------------------- */
+  --color-ink: #d4d4d8;
+
+  /* --- Accent (the brand colour) -------------------------------------- */
+  --color-accent: #ff6a00;
+  --color-accent-soft: #ff8a3d;
+  /* Text/icon colour that sits on top of an accent fill. Near-black rather
+     than white: white-on-#FF6A00 is only 2.9:1 and would fail AA at button
+     text sizes, whereas #0D0D0D-on-#FF6A00 is 6.8:1. */
+  --color-accent-foreground: #0d0d0d;
+
+  /* --- Lines ---------------------------------------------------------- */
+  --color-border: #262626;
+  --color-border-strong: #3a3a3a;
+
+  /* --- Status ---------------------------------------------------------
+     Lifted for a dark ground: the light-theme equivalents (#166534/#B91C1C)
+     fall to roughly 2:1 here and would be unreadable. */
+  --color-success: #4ade80;
+  --color-danger: #f87171;
+
+  /* --- Semantic (shadcn/ui compatible aliases) ------------------------
+      `primary` is the accent, NOT the foreground. On a dark ground an ink-on-
+      paper pairing inverts: aliasing `primary` to `fg` would make the default
+      button white-on-white. The accent is what carries the primary action,
+      and it is the same orange the project artwork uses, so the CTA ties the
+      page to the work shown on it.
+      shadcn's own `accent` utility is intentionally NOT aliased here: it means
+      "neutral hover surface" in shadcn, which would collide with the brand
+      `--color-accent`. Neutral hovers use `--color-surface-hover`. */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-bg-elevated);
+  --color-popover-foreground: var(--color-fg);
+  --color-primary: var(--color-accent);
+  --color-primary-foreground: var(--color-accent-foreground);
+  --color-secondary: var(--color-surface-hover);
+  --color-secondary-foreground: var(--color-fg);
+  --color-muted: var(--color-surface-hover);
+  --color-muted-foreground: var(--color-fg-muted);
+  --color-destructive: var(--color-danger);
+  --color-destructive-foreground: #0d0d0d;
+  --color-border-ui: var(--color-border);
+  --color-input: var(--color-border-strong);
+  --color-ring: var(--color-accent);
+
+  /* --- Typography ----------------------------------------------------- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* --- Radii — restrained. Nothing is fully rounded. ------------------ */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* --- Motion --------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* --- Layout --------------------------------------------------------- */
+  --spacing-header: 4.5rem;
+
+  /* --- Animations ----------------------------------------------------- */
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-shimmer: shimmer 2.4s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-spin-slow: spin 16s linear infinite;
+  --animate-pulse-dot: pulse-dot 2.2s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-success) 55%, transparent);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--color-success) 0%, transparent);
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--spacing-header) + 1.5rem);
+    -webkit-tap-highlight-color: transparent;
+    /* The `color-scheme` meta tag from `layout.tsx` sets the document default,
+       but this property is what the UA actually resolves — it is what makes
+       scrollbars, form-control internals and the caret render dark instead of
+       flashing a light frame on first paint. */
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+
+  /* Focus: visible, high-contrast, accent-coloured ring. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Headings should never be selectable-mangled; tighten defaults. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Scrollbar — tuned for the dark shell. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-strong);
+    border-radius: 999px;
+    border: 3px solid var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #52525b;
+  }
+
+  /* Inputs inherit the dark theme. */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Remove the number-input spinners; they look broken on dark surfaces. */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+/* Page gutter. Max width is held at 1360px so line lengths stay readable on
+   ultra-wide displays instead of stretching to the viewport edge. */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 85rem;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
+  @media (min-width: 1536px) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Fluid display type: clamp keeps headlines intentional at every breakpoint.
+   Upper bound is 5.5rem rather than 6.5rem so a long name like "Laxmi
+   Chaudhary" never has to break awkwardly at the 1440px+ range. */
+@utility text-display {
+  font-size: clamp(2.25rem, 6.5vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+@utility text-display-sm {
+  font-size: clamp(1.875rem, 4.6vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+@utility text-h3 {
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Serif italic accent used inside display headings. */
+@utility font-accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-fg-subtle);
+}
+
+@utility text-balance-pretty {
+  text-wrap: balance;
+}
+
+/* Hairline grid used behind the hero and section headers. Mixed from the
+   foreground token (not the border token) so the lines stay visible but faint
+   against the #0d0d0d ground at every breakpoint. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-fg) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-fg) 7%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@utility bg-dot-grid {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-fg) 18%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* A single accent gradient — reserved for CTAs, focus glow and hero art.
+   Both stops are orange-family, so the blend stays subtle by design. */
+@utility bg-accent-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-accent-soft) 100%
+  );
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@utility mask-fade-y {
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+
+/* ==========================================================================
+   Reduced motion — honour the OS setting everywhere.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Print — the resume page prints cleanly.
+   ========================================================================== */
+
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-elevated: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-hover: #f3f4f6;
+    --color-fg: #000000;
+    --color-fg-muted: #333333;
+    --color-fg-subtle: #555555;
+    --color-ink: #000000;
+    --color-border: #cccccc;
+    --color-border-strong: #999999;
+    /* Actions print as solid ink: an orange fill is legible on screen but
+       wastes toner and distorts the layout on paper. */
+    --color-accent: #000000;
+    --color-accent-foreground: #ffffff;
+    --color-accent-soft: #000000;
+    --color-primary: #000000;
+    --color-primary-foreground: #ffffff;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .print\:hidden,
+  header[data-site-navbar],
+  footer[data-site-footer] {
+    display: none !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.7em;
+    color: #555;
+  }
+}

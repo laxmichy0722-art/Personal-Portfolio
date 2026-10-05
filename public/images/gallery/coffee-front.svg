@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-labelledby="art-title art-desc">
+<title id="art-title">Coffee packaging front</title>
+<desc id="art-desc">Coffee bag front panel with origin and process information.</desc>
+<rect width="900" height="1200" fill="#0D0D0D"/>
+<rect x="0" y="0" width="900" height="1200" rx="0" fill="#0D0D0D" opacity="1"/>
+<circle cx="450" cy="600" r="320" fill="#B45309" opacity="0.06"/>
+<text x="72" y="84" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="10" font-weight="500" fill="#888888" letter-spacing="2.4" text-anchor="start" opacity="1">PACKAGING</text>
+<text x="72" y="116" font-family="Inter, ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="600" fill="#FFFFFF" letter-spacing="-1" text-anchor="start" opacity="1">Coffee front</text>
+<rect x="214" y="144" width="472" height="712" rx="6" fill="#000000" opacity="1"/>
+<rect x="220" y="150" width="460" height="700" rx="4" fill="#111111" stroke="#3A3A3A" stroke-width="1" opacity="1"/>
+<rect x="220" y="150" width="460" height="54" rx="4" fill="#1A1A1A" stroke="#3A3A3A" stroke-width="1" opacity="1"/>
+<text x="244" y="184" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="9" font-weight="500" fill="#888888" letter-spacing="1.6" text-anchor="start" opacity="1">VALVE</text>
+<circle cx="652" cy="177" r="6" fill="#3A3A3A" opacity="1"/>
+<rect x="256" y="246" width="388" height="420" rx="4" fill="#0D0D0D" stroke="#3A3A3A" stroke-width="1" opacity="1"/>
+<rect x="256" y="246" width="388" height="6" rx="0" fill="#B45309" opacity="1"/>
+<text x="280" y="296" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="9.5" font-weight="500" fill="#888888" letter-spacing="2" text-anchor="start" opacity="1">SINGLE ORIGIN</text>
+<text x="280" y="358" font-family="Inter, ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#FFFFFF" letter-spacing="-1.8" text-anchor="start" opacity="1">HIMALAYA</text>
+<text x="280" y="402" font-family="Inter, ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#B45309" letter-spacing="-1.8" text-anchor="start" opacity="1">ESTATE</text>
+<line x1="280" y1="442" x2="620" y2="442" stroke="#3A3A3A" stroke-width="1" opacity="1"/>
+<line x1="280" y1="476" x2="372" y2="476" stroke="#3A3A3A" stroke-width="5" stroke-linecap="round" opacity="1"/>
+<line x1="512" y1="476" x2="620" y2="476" stroke="#B45309" stroke-width="5" stroke-linecap="round" opacity="0.8"/>,<line x1="280" y1="510" x2="372" y2="510" stroke="#3A3A3A" stroke-width="5" stroke-linecap="round" opacity="1"/>
+<line x1="512" y1="510" x2="620" y2="510" stroke="#B45309" stroke-width="5" stroke-linecap="round" opacity="0.64"/>,<line x1="280" y1="544" x2="372" y2="544" stroke="#3A3A3A" stroke-width="5" stroke-linecap="round" opacity="1"/>
+<line x1="512" y1="544" x2="620" y2="544" stroke="#B45309" stroke-width="5" stroke-linecap="round" opacity="0.48000000000000004"/>
+<text x="280" y="468" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="8" font-weight="500" fill="#888888" letter-spacing="1.6" text-anchor="start" opacity="1">ALTITUDE</text>,<text x="280" y="502" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="8" font-weight="500" fill="#888888" letter-spacing="1.6" text-anchor="start" opacity="1">PROCESS</text>,<text x="280" y="536" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="8" font-weight="500" fill="#888888" letter-spacing="1.6" text-anchor="start" opacity="1">VARIETAL</text>
+<text x="280" y="636" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="10" font-weight="500" fill="#888888" letter-spacing="0.6" text-anchor="start" opacity="1">Front panel - read at three metres</text>
+<circle cx="724" cy="754" r="68" fill="none" opacity="1" stroke="#B45309" stroke-width="1.5"/>
+<text x="724" y="750" font-family="Inter, ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="600" fill="#FFFFFF" letter-spacing="-1.4" text-anchor="middle" opacity="1">250</text>
+<text x="724" y="772" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="8" font-weight="500" fill="#888888" letter-spacing="1.6" text-anchor="middle" opacity="1">GRAMS</text>
+<text x="72" y="1116" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="10" font-weight="500" fill="#888888" letter-spacing="1.6" text-anchor="start" opacity="1">DIELINE / CMYK / UNCOATED</text>
+<text x="828" y="1116" font-family="ui-monospace, 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="10" font-weight="500" fill="#B45309" letter-spacing="1.6" text-anchor="end" opacity="1">PRINT READY</text>
+</svg>
