@@ -95,7 +95,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="transition-colors hover:text-accent"
+                  className="inline-block py-1 transition-colors hover:text-accent"
                 >
                   {siteConfig.email}
                 </a>
@@ -103,7 +103,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.phoneHref}`}
-                  className="transition-colors hover:text-accent"
+                  className="inline-block py-1 transition-colors hover:text-accent"
                 >
                   {siteConfig.phone}
                 </a>
@@ -112,7 +112,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 text-fg transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-1.5 py-1 text-fg transition-colors hover:text-accent"
                 >
                   Start a project →
                 </Link>
@@ -147,7 +147,11 @@ function FooterLink({
   return (
     <Link
       href={href}
-      className="text-sm text-fg-muted transition-colors hover:text-fg"
+      /* py-1 takes these inline links from a 17px line box to a 25px target,
+         clearing WCAG 2.5.8 AA (24x24) without changing the footer rhythm --
+         the surrounding ul uses space-y-3, so the extra height reads as the
+         same gap it always had. */
+      className="inline-block py-1 text-sm text-fg-muted transition-colors hover:text-fg"
     >
       {children}
     </Link>

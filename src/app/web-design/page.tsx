@@ -16,7 +16,7 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Web Design",
-  description: `Responsive website design by ${siteConfig.name} — business sites, portfolios, landing pages and restaurant websites that hold up from a 320px phone to an ultrawide display.`,
+  description: `Responsive website design by ${siteConfig.name} â€” business sites, portfolios, landing pages and restaurant websites that hold up from a 320px phone to an ultrawide display.`,
   alternates: { canonical: "/web-design" },
 };
 
@@ -58,7 +58,7 @@ export default async function WebDesignPage() {
         aside={
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline"
+            className="inline-flex items-center gap-1.5 py-1 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
             Request a website
             <ArrowRight aria-hidden="true" className="size-4" />
@@ -90,7 +90,7 @@ export default async function WebDesignPage() {
                     className="flex gap-2.5 text-sm text-fg-muted"
                   >
                     <span aria-hidden="true" className="text-accent">
-                      ·
+                      Â·
                     </span>
                     {deliverable}
                   </li>
@@ -106,7 +106,7 @@ export default async function WebDesignPage() {
         <SectionHeading
           eyebrow="Mockups"
           title="Website Designs"
-          description="Two pages from an agricultural business site — homepage and services — showing the lead section and the card system that holds three or six services without a relayout."
+          description="Two pages from an agricultural business site â€” homepage and services â€” showing the lead section and the card system that holds three or six services without a relayout."
         />
 
         <div className="mt-14 space-y-12">
@@ -115,7 +115,7 @@ export default async function WebDesignPage() {
               src="/images/projects/cg-agro-home.svg"
               alt="CG Agro Farm homepage with a photographic hero and service cards"
               url="cgagrofarm.com"
-              caption="Homepage — lead with capability, not company history"
+              caption="Homepage â€” lead with capability, not company history"
               priority
             />
           </Reveal>
@@ -133,7 +133,7 @@ export default async function WebDesignPage() {
         <Reveal delay={0.12} className="mt-10">
           <p className="border-l-2 border-border pl-4 text-xs leading-relaxed text-fg-subtle">
             These are design renders produced in Figma, not live deployments. The
-            address shown in the frame is illustrative — no site is hosted at that
+            address shown in the frame is illustrative â€” no site is hosted at that
             address.
           </p>
         </Reveal>

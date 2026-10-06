@@ -15,7 +15,7 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Full-Stack Development",
-  description: `Full-stack development with Next.js, React, TypeScript, Node.js, PostgreSQL and Supabase by ${siteConfig.name} — schemas, typed APIs, authentication and admin dashboards, designed and built by the same person.`,
+  description: `Full-stack development with Next.js, React, TypeScript, Node.js, PostgreSQL and Supabase by ${siteConfig.name} â€” schemas, typed APIs, authentication and admin dashboards, designed and built by the same person.`,
   alternates: { canonical: "/full-stack-development" },
 };
 
@@ -54,7 +54,7 @@ const capabilities = [
   },
   {
     title: "Typed APIs",
-    body: "Route handlers with a shared validation schema per endpoint — the same schema runs on the client and the server.",
+    body: "Route handlers with a shared validation schema per endpoint â€” the same schema runs on the client and the server.",
   },
   {
     title: "Authentication",
@@ -89,11 +89,11 @@ export default async function FullStackPage() {
             <span className="font-accent">Actually Shipped.</span>
           </>
         }
-        description="Most portfolios show the design and leave the engineering to someone else. This side shows the other half — schemas, APIs, authentication and admin surfaces, built by the same person who drew the interface."
+        description="Most portfolios show the design and leave the engineering to someone else. This side shows the other half â€” schemas, APIs, authentication and admin surfaces, built by the same person who drew the interface."
         aside={
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline"
+            className="inline-flex items-center gap-1.5 py-1 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
             Discuss a build
             <ArrowRight aria-hidden="true" className="size-4" />
@@ -194,7 +194,7 @@ export default async function FullStackPage() {
           <SectionHeading
             eyebrow="Case Studies"
             title="Built, Not Just Designed"
-            description="Database-backed applications with authentication, admin surfaces and analytics. Screens are design renders — the projects are not publicly hosted."
+            description="Database-backed applications with authentication, admin surfaces and analytics. Screens are design renders â€” the projects are not publicly hosted."
           />
           <div className="mt-14">
             <ProjectGrid

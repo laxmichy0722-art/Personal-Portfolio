@@ -54,7 +54,7 @@ export default async function GraphicDesignPage() {
         aside={
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline"
+            className="inline-flex items-center gap-1.5 py-1 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
             Commission a design
             <ArrowRight aria-hidden="true" className="size-4" />
@@ -64,7 +64,7 @@ export default async function GraphicDesignPage() {
           { label: "Gallery items", value: String(galleryItems.length) },
           { label: "Disciplines", value: String(toolGroups.length) },
           { label: "Print ready", value: "Yes" },
-          { label: "Tools", value: "AI · PS · ID" },
+          { label: "Tools", value: "AI Â· PS Â· ID" },
         ]}
       />
 
@@ -123,7 +123,7 @@ export default async function GraphicDesignPage() {
                 {group.items.map((item) => (
                   <p key={item} className="flex gap-2.5 text-sm text-fg-muted">
                     <span aria-hidden="true" className="text-accent">
-                      ·
+                      Â·
                     </span>
                     {item}
                   </p>

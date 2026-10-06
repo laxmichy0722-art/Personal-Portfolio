@@ -47,7 +47,7 @@ export default async function AdminLayout({
             </span>
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-sm text-fg-muted transition-colors hover:text-accent"
+              className="inline-flex items-center gap-1.5 py-1 text-sm text-fg-muted transition-colors hover:text-accent"
             >
               Site
               <ExternalLink aria-hidden="true" className="size-3.5" />
@@ -107,7 +107,7 @@ function AdminSetupNotice({ missing }: { missing: string }) {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-flex text-sm text-fg underline underline-offset-4 hover:text-accent"
+          className="mt-8 inline-flex py-1 text-sm text-fg underline underline-offset-4 hover:text-accent"
         >
           Back to the portfolio
         </Link>

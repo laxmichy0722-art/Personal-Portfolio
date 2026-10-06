@@ -106,7 +106,8 @@ const AUDIT_FN = String.raw`
   // is SC 2.5.8 at 24x24. This reports against the stricter AAA figure so it
   // stays useful as a ceiling -- read a hit against 24 before treating it as
   // an accessibility failure.
-  R.smallTapTargets = small.slice(0,12);
+  R.smallTapTargets = small.slice(0,40);
+  R.smallTapTargetsCount = small.length;
   R.smallTapTargetsNote = "measured against WCAG AAA 44x44; AA minimum is 24x24";
 
   const low = [], seen = new Set(); let skipped = 0;
@@ -166,7 +167,15 @@ const AUDIT_FN = String.raw`
     for (const c of conts) { const k = c.left + "/" + c.right; tally.set(k, (tally.get(k) || 0) + 1); }
     const [modal, count] = [...tally.entries()].sort((a, b) => b[1] - a[1])[0];
     L.modalInset = modal;
-    L.containerOutliers = { against: count + " of " + conts.length, list: conts.filter(c => c.left + "/" + c.right !== modal) };
+    const modalWidth = conts.find(c => c.left + "/" + c.right === modal)?.width ?? 0;
+    L.containerOutliers = {
+      against: count + " of " + conts.length,
+      // A deliberately narrower centred block (the admin login card sits in a
+      // 672px column inside the full-width shell) is correct design, not drift.
+      // What actually breaks alignment is an ASYMMETRIC inset, or a container
+      // wider than the shared rhythm, so only those two cases are reported.
+      list: conts.filter(c => c.left !== c.right || c.width > modalWidth),
+    };
   }
 
   /* Real horizontal overflow. An element wider than the viewport is only a bug

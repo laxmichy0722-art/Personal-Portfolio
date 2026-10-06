@@ -216,7 +216,7 @@ export default async function ResumePage() {
           </p>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1.5 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline print:hidden"
+            className="inline-flex items-center gap-1.5 py-1 text-sm text-fg underline-offset-4 transition-colors hover:text-accent hover:underline print:hidden"
           >
             <ArrowLeft aria-hidden="true" className="size-4 rotate-180" />
             View projects
